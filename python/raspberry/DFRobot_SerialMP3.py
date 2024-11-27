@@ -284,7 +284,7 @@ class DFRobot_SerialMP3:
         self._send_buf[4+len] = self.CMD_END
 
         self.ser.write(self._send_buf)
-
+        time.sleep(0.01)
         if ack:
             t_start = time.time()
             while (time.time() - t_start) < self.TIME_OUT:
