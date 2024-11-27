@@ -1,0 +1,49 @@
+
+#######################################
+# Syntax Map For DFRobot_SerialMP3
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFRobot_SerialMP3	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+next	KEYWORD2
+previou	KEYWORD2
+specify	KEYWORD2
+volumeAdd	KEYWORD2
+volumeSub	KEYWORD2
+volumeSet	KEYWORD2
+volumeGet	KEYWORD2
+specifyLoop	KEYWORD2
+lPower	KEYWORD2
+reset	KEYWORD2
+startPlay	KEYWORD2
+pausePlay	KEYWORD2
+specifyTrask	KEYWORD2
+loopAll	KEYWORD2
+stopPlay	KEYWORD2
+randomAll	KEYWORD2
+currentLoop	KEYWORD2
+playAudioMix	KEYWORD2
+getState	KEYWORD2
+getVersion	KEYWORD2
+getFile	KEYWORD2
+getFileNumber	KEYWORD2
+
+
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
