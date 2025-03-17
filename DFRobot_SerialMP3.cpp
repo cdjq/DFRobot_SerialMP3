@@ -196,7 +196,7 @@ uint8_t DFRobot_SerialMP3::sendCMDAndDetectAck(uint8_t cmd, uint8_t* data, uint1
         _s->write(sendBuf[i]);
         //DBG(sendBuf[i]);
     }
-    delay(10)
+    delay(10);
     if(ack){
         uint32_t staritTime = millis();
         while((millis() - staritTime) < TIME_OUT){
