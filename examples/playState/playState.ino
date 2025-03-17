@@ -1,6 +1,6 @@
 /*!
  *@file  playState.ino
- *@brief 这是一个获取模块的示例代码。
+ *@brief This is an example code for getting the module.
  * ---------------------------------------------------------------------------------------------------------------
  *    board   |             MCU                | Leonardo/Mega2560/M0 |    UNO    | ESP8266 | ESP32 |  microbit  |
  *     VCC    |            3.3V/5V             |        VCC           |    VCC    |   VCC   |  VCC  |     X      |
@@ -39,21 +39,21 @@ void setup()
     #endif
     
     Serial.begin(115200);
-    ///<复位设备
+    ///< Reset the device
     mp3.reset();
     delay(1000);
 
-    ///<检测设备
+    ///< Detect the device
     while(mp3.getVersion() == 0){
         Serial.println("not fount device !!!");
         delay(100);
     }
-
-    ///<设置音量
-    mp3.volumeSet(10);
+  
+    ///< Set volume
+    mp3.volumeSet(5);
     delay(10);
 
-    ///<设置单曲循环
+    ///< Set single song loop
     mp3.specifyLoop(1);
     delay(10);
 
@@ -61,19 +61,17 @@ void setup()
 
 void loop() 
 {
-    ///<获取版本号
+    ///< Get version number
     Serial.print("Version:");
     Serial.println(mp3.getVersion());
-    ///<获取播放状态
+    ///< Get playback status
     Serial.print("Play State:");
     Serial.println(mp3.getState());
-    ///<获取当前歌曲序列号
+    ///< Get current song sequence number
     Serial.print("File number:");
     Serial.println(mp3.getFileNumber());
-    ///<获取内置空间总文件数量
+    ///< Get total number of files in built-in storage
     Serial.print("All file number:");
     Serial.println(mp3.getFile());
     delay(1000);
-
 }
-

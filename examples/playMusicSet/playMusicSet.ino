@@ -1,6 +1,6 @@
 /*!
  *@file  playMusicSet.ino
- *@brief 这是一个设置模块的示例代码。
+ *@brief This is an example code for setting up the module.
  * ---------------------------------------------------------------------------------------------------------------
  *    board   |             MCU                | Leonardo/Mega2560/M0 |    UNO    | ESP8266 | ESP32 |  microbit  |
  *     VCC    |            3.3V/5V             |        VCC           |    VCC    |   VCC   |  VCC  |     X      |
@@ -39,28 +39,28 @@ void setup()
     #endif
     
     Serial.begin(115200);
-    ///<复位设备
+    ///< Reset the device
     mp3.reset();
     delay(1000);
 
-    ///<检测设备
+    ///< Detect the device
     while(mp3.getVersion() == 0){
         Serial.println("not fount device !!!");
         delay(100);
     }
 
-    ///<设置音量
+    ///< Set volume
     mp3.volumeSet(10);
 
-    ///<开始播放
+    ///<start play
     mp3.startPlay();
     delay(10000);
 
-    ///<播放暂停
+    ///<stop play
     mp3.pausePlay();
     delay(100);
 
-    ///<设置单曲循环
+    ///< Set single track loop
     mp3.specifyLoop(3);
     delay(10);
 

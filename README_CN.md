@@ -5,7 +5,7 @@
 
 ![](./resources/images/SEN0628.png)
 
-## 产品链接(https://www.dfrobot.com.cn)
+## 产品链接(https://www.dfrobot.com)
 
     SKU：SEN0628
 

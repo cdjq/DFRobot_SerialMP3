@@ -1,4 +1,14 @@
 # -*- coding: utf-8 -*-
+'''!
+  @play_music_set.py
+  @brief This is an example code for setting up the module.
+  @copyright   Copyright (c) 2024 DFRobot Co.Ltd (http://www.dfrobot.com)
+  @license     The MIT License (MIT)
+  @author      [TangJie](jie.tang@dfrobot.com)
+  @version     V1.0
+  @date        2024-11-22
+  @url         https://github.com/DFRobot/DFRobot_SerialMP3
+'''
 
 from __future__ import print_function
 import sys

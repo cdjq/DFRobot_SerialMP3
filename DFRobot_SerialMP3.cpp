@@ -1,6 +1,6 @@
 /**
  * @file DFRobot_SerialMP3.h
- * @brief 这是串口MP3模块驱动库的实现
+ * @brief This is the implementation of the serial MP3 module driver library
  * @copyright Copyright (c) 2024 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license The MIT License (MIT)
  * @author    [TangJie](jie.tang@dfrobot.com)
@@ -8,6 +8,7 @@
  * @date      2024-11-22
  * @url https://github.com/DFRobot/DFRobot_SerialMP3
  */
+
 #include "DFRobot_SerialMP3.h"
 #include "stdio.h"
 #include "stdlib.h"
@@ -194,7 +195,6 @@ uint8_t DFRobot_SerialMP3::sendCMDAndDetectAck(uint8_t cmd, uint8_t* data, uint1
 
     for(uint8_t i = 0;i < len+5; i++){
         _s->write(sendBuf[i]);
-        //DBG(sendBuf[i]);
     }
     delay(10);
     if(ack){
@@ -208,12 +208,12 @@ uint8_t DFRobot_SerialMP3::sendCMDAndDetectAck(uint8_t cmd, uint8_t* data, uint1
                     recVBuf[recvState++] = CMD_START;
                 }else if(data == CMD_END){
                     recVBuf[recvState++] = CMD_END;     
-                    break;///<结束循环
+                    break; ///< End loop
                 }else if(recvState > 0){
                     if(recvState < BUF_SIZE - 1){
                         recVBuf[recvState++] = data;
                     }else{
-                        return 0; ///<抛出异常
+                        return 0; ///< Throw exception
                     }
                 }
             }

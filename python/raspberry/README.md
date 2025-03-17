@@ -1,7 +1,7 @@
 # DFRobot_SerialMP3
 - [中文版](./README_CN.md)
 
-这是一个串口MP3播放模块的库。
+    This is a library for the serial MP3 playback module.
 
 ![](./resources/images/SEN0628.png)
 
@@ -19,7 +19,7 @@
 * [credits](#credits)
 
 ## Overview
-这是一个串口MP3播放模块的库。
+This is a library for the serial MP3 playback module.
 
 ## installation
 
@@ -31,161 +31,161 @@ Before using this library, first download the library files, paste them into the
   def next(self):
         '''
             @fn next
-            @brief 下一曲
-            @return 0:error, 1:ok
+            @brief Next track
+            @return 0:Failure, 1:Success
         '''
 
     def previou(self):
         '''
             @fn previou
-            @breif 上一曲
-            @return 0:error, 1:ok
+            @breif Previous track
+            @return 0:Failure, 1:Success
         '''
 
     def specify(self, q):
         '''
             @fn specify
-            @brief 播放指定曲目
-            @return 0:error, 1:ok
+            @brief Play specified track
+            @return 0:Failure, 1:Success
         '''
     
     def volume_add(self):
         '''
             @fn volume_add
-            @brief 音量加
-            @return 0:error, 1:ok
+            @brief Increase volume
+            @return 0:Failure, 1:Success
         '''
 
     def volume_sub(self):
         '''
             @fn volume_sub
-            @brief 音量减
-            @return 0:error, 1:ok
+            @brief Decrease volume
+            @return 0:Failure, 1:Success
         '''
     
     def volume_set(self, vol):
         '''
             @fn volume_set
-            @brief 音量设置
-            @param vol 音量大小，范围0~30
-            @return 0: 失败，1：成功
+            @brief Set volume
+            @param vol Volume level, range 0~30
+            @return 0:Failure, 1:Success
         '''
     
     def volume_get(self):
         '''
             @fn volume_get
-            @brief 获取当前音量
-            @return 返回音量
+            @brief Get current volume
+            @return Returns the volume
         '''
         
     def specify_loop(self, sp):
         '''
             @fn specify_loop
-            @brief 单曲循环
-            @param sp 循环曲目编号
-            @return 0：失败，1：成功
+            @brief Single track loop
+            @param sp Loop track number
+            @return 0:Failure, 1:Success
         '''
 
     def lPower(self):
         '''
             @fn lPower
-            @brief 设置低功耗模式
-            @return 0：失败，1：成功
+            @brief Set low power mode
+            @return 0:Failure, 1:Success
         '''
 
     def reset(self):
         '''
             @fn reset
-            @brief 复位串口MP模块
-            @return 0：失败，1：成功
+            @brief Reset the serial MP3 module
+            @return 0:Failure, 1:Success
         '''
 
     def start_play(self):
         '''
-            @fn startPlay
-            @brief 开始播放音乐
-            @return 0：失败，1：成功
+            @fn start_play
+            @brief Start playing music
+            @return 0:Failure, 1:Success
         '''
 
     def pause_play(self):
         '''
-            @fn pausePlay
-            @brief 暂停播放
-            @return 0：失败，1：成功
+            @fn pause_play
+            @brief Pause playback
+            @return 0:Failure, 1:Success
         '''
 
     def specify_trask(self,folder, sp):
         '''
-            @fn specifyTrask
-            @brief 播放指定文件夹中的曲目
-            @param folder 文件夹代号
-            @param sp 歌曲代号
-            @return 0：失败，1：成功
+            @fn specify_trask
+            @brief Play track from specified folder
+            @param folder Folder code
+            @param sp Song code
+            @return 0:Failure, 1:Success
         '''
 
     def loop_all(self):
         '''
-            @fn loopAll
-            @brief 循环播放全部歌曲
-            @return 0：失败，1：成功
+            @fn loop_all
+            @brief Loop through all songs
+            @return 0:Failure, 1:Success
         '''
 
     def stop_play(self):
         '''
-            @fn stopPlay
-            @brief 停止播放
-            @return 0：失败，1：成功
+            @fn stop_play
+            @brief Stop playback
+            @return 0:Failure, 1:Success
         '''
 
     def random_all(self):
         '''
-            @fn randomAll
-            @brief 随机播放全部歌曲
-            @return 0：失败，1：成功
+            @fn random_all
+            @brief Randomly play all songs
+            @return 0:Failure, 1:Success
         '''
 
     def current_loop(self):
         '''
-            @fn currentLoop
-            @brief 循环播放当前歌曲
-            @return 0：失败，1：成功
+            @fn current_loop
+            @brief Loop current song
+            @return 0:Failure, 1:Success
         '''
 
     def play_audio_mix(self, buf, number):
         '''
-            @fn playAudioMix
-            @brief 组合播放指定歌曲
-            @param buf 需要播放的歌曲
-            @param number 组合的歌曲数量
-            @return 0：失败，1：成功
+            @fn play_audio_mix
+            @brief Play specified songs in combination
+            @param buf Songs to be played
+            @param number Number of songs in the combination
+            @return 0:Failure, 1:Success
         '''
 
     def get_state(self):
         '''
-            @fn getState
-            @brief 获取模块播放状态
-            @return 返回播放状态，1：播放，2：暂停，3：停止, 0：错误
+            @fn get_state
+            @brief Get the module's playback status
+            @return Returns the playback status: 1: Playing, 2: Paused, 3: Stopped, 0: Error
         '''
 
     def get_version(self):
         '''
-            @fn getVersion
-            @brief 获取当前版本
-            @return 返回当前版本
+            @fn get_version
+            @brief Get current version
+            @return Returns the current version
         '''
     
     def get_file(self):
         '''
-            @fn getFile
-            @brief 获取内置空间总文件数量
-            @return 返回文件数量
+            @fn get_file
+            @brief Get total number of files in built-in storage
+            @return Returns the number of files
         '''
 
     def get_file_number(self):
         '''
-            @fn getFileNumber
-            @brief 获取当前歌曲序列号
-            @return 返回序列号
+            @fn get_file_number
+            @brief Get current song sequence number
+            @return Returns the sequence number
         '''
 ```
 

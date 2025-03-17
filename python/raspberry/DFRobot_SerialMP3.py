@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 '''!
  * @file DFRobot_SerialMP3.py
- * @brief 这是串口MP3模块驱动库的构造函数
+ * @brief This is the constructor for the serial MP3 module driver library.
  * @copyright Copyright (c) 2024 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license The MIT License (MIT)
  * @author    [TangJie](jie.tang@dfrobot.com)
@@ -14,35 +14,37 @@ import time
 
 class DFRobot_SerialMP3:
 
-    TIME_OUT            =    10     #数据接收超时时间，10ms
-    CMD_START           =    0x7E   #命令包头
-    CMD_END             =    0xEF   #命令包尾
-    CMD_OK              =    0x41   #命令包返回接收成功
-    CMD_ERROR           =    0X40   #命令包返回接收错误
-    CMD_VERSION         =    0x46   #请求版本号
-    CMD_PLAYSTATE       =    0x42   #播放状态
-    CMD_NEXT            =    0x01   #下一曲
-    CMD_PREVIOU         =    0x02   #上一曲
-    CMD_SPECIFY         =    0x03   #播放指定歌曲
-    CMD_VOLUME_ADD      =    0x04   #音量加
-    CMD_VOLUME_SUB      =    0x05   #音量减
-    CMD_VOLUME_SET      =    0x06   #指定音量等级设置
-    CMD_SPECIFY_LOOP    =    0x08   #指定歌曲单曲循环
-    CMD_L_POWER         =    0x0A   #芯片进入低功耗
-    CMD_RESET           =    0x0C   #芯片复位
-    CMD_START_PLAY      =    0x0D   #播放
-    CMD_PAUSE           =    0x0E   #暂停
-    CMD_SPECIFY_TRACK   =    0x0F   #播放指定文件夹中的歌曲
-    CMD_LOOP_ALL        =    0x11   #当前全部歌曲循环播放
-    CMD_STOP_PLAY       =    0x16   #停止
-    CMD_RANDOM_ALL      =    0x18   #当前全部歌曲随机播放
-    CMD_LOOP            =    0x19   #当前歌曲单曲循环
-    CMD_PLAYBACK        =    0x21   #组合播放歌曲
-    CMD_GET_STATE       =    0x42   #获取播放状态
-    CMD_GET_VOLUME      =    0x43   #获取当前音量
-    CMD_GET_VERSION     =    0x46   #查询当前版本
-    CMD_GET_FILE        =    0x4A   #查询内置文件总数量
-    CMD_GET_FILENUMBER  =    0x4E   #查询内置文件当前文件序列号
+    TIME_OUT            =    10     # Data reception timeout, 1ms
+    CMD_START           =    0x7E   # Command packet header
+    CMD_END             =    0xEF   # Command packet tail
+    CMD_OK              =    0x41   # Command packet indicates successful reception
+    CMD_ERROR           =    0X40   # Command packet indicates reception error
+    CMD_VERSION         =    0x46   # Request version number
+    CMD_PLAYSTATE       =    0x42   # Play state
+
+    CMD_NEXT            =    0x01   # Next track
+    CMD_PREVIOU         =    0x02   # Previous track
+    CMD_SPECIFY         =    0x03   # Play specified song
+    CMD_VOLUME_ADD      =    0x04   # Increase volume
+    CMD_VOLUME_SUB      =    0x05   # Decrease volume
+    CMD_VOLUME_SET      =    0x06   # Set specified volume level
+    CMD_SPECIFY_LOOP    =    0x08   # Repeat specified song 
+    CMD_L_POWER         =    0x0A   # Chip enters low power mode
+    CMD_RESET           =    0x0C   # Chip reset
+    CMD_START_PLAY      =    0x0D   # Start playing
+    CMD_PAUSE           =    0x0E   # Pause
+    CMD_SPECIFY_TRACK   =    0x0F   # Play song from specified folder
+    CMD_LOOP_ALL        =    0x11   #Loop all current songs
+    CMD_STOP_PLAY       =    0x16   # Stop playing
+    CMD_RANDOM_ALL      =    0x18   # Randomly play all current songs
+    CMD_LOOP            =    0x19   # Repeat current song
+    CMD_PLAYBACK        =    0x21   # Play songs in combination
+    CMD_GET_STATE       =    0x42   # Get playback status
+    CMD_GET_VOLUME      =    0x43   # Get current volume
+    CMD_GET_VERSION     =    0x46   # Query current version
+    CMD_GET_FILE        =    0x4A   # Query total number of built-in files
+    CMD_GET_FILENUMBER  =    0x4E   # Query current file sequence number in built-in files
+
 
     DATA_ZERO          =    0X00
     def __init__(self):
@@ -56,57 +58,57 @@ class DFRobot_SerialMP3:
     def next(self):
         '''
             @fn next
-            @brief 下一曲
-            @return 0:error, 1:ok
+            @brief Next track
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_NEXT, self.DATA_ZERO)
 
     def previou(self):
         '''
             @fn previou
-            @breif 上一曲
-            @return 0:error, 1:ok
+            @breif Previous track
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_PREVIOU, self.DATA_ZERO)
 
     def specify(self, q):
         '''
             @fn specify
-            @brief 播放指定曲目
-            @return 0:error, 1:ok
+            @brief Play specified track
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_SPECIFY, q)
     
     def volume_add(self):
         '''
             @fn volume_add
-            @brief 音量加
-            @return 0:error, 1:ok
+            @brief Increase volume
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_VOLUME_ADD, self.DATA_ZERO)
 
     def volume_sub(self):
         '''
             @fn volume_sub
-            @brief 音量减
-            @return 0:error, 1:ok
+            @brief Decrease volume
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_VOLUME_SUB, self.DATA_ZERO)
     
     def volume_set(self, vol):
         '''
             @fn volume_set
-            @brief 音量设置
-            @param vol 音量大小，范围0~30
-            @return 0: 失败，1：成功
+            @brief Set volume
+            @param vol Volume level, range 0~30
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_VOLUME_SET, vol, False)
     
     def volume_get(self):
         '''
             @fn volume_get
-            @brief 获取当前音量
-            @return 返回音量
+            @brief Get current volume
+            @return Returns the volume
         '''
         self.ret = 0
         if self.__send_cmd_and_detect_ack(self.CMD_GET_VOLUME, self.DATA_ZERO, True):
@@ -118,51 +120,51 @@ class DFRobot_SerialMP3:
     def specify_loop(self, sp):
         '''
             @fn specify_loop
-            @brief 单曲循环
-            @param sp 循环曲目编号
-            @return 0：失败，1：成功
+            @brief Single track loop
+            @param sp Loop track number
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_SPECIFY_LOOP, sp, False)
 
     def lPower(self):
         '''
             @fn lPower
-            @brief 设置低功耗模式
-            @return 0：失败，1：成功
+            @brief Set low power mode
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_L_POWER, self.DATA_ZERO)
 
     def reset(self):
         '''
             @fn reset
-            @brief 复位串口MP模块
-            @return 0：失败，1：成功
+            @brief Reset the serial MP3 module
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_RESET, self.DATA_ZERO, False)
 
     def start_play(self):
         '''
-            @fn startPlay
-            @brief 开始播放音乐
-            @return 0：失败，1：成功
+            @fn start_play
+            @brief Start playing music
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_START_PLAY, self.DATA_ZERO)
 
     def pause_play(self):
         '''
-            @fn pausePlay
-            @brief 暂停播放
-            @return 0：失败，1：成功
+            @fn pause_play
+            @brief Pause playback
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_PAUSE, self.DATA_ZERO)
 
     def specify_trask(self,folder, sp):
         '''
-            @fn specifyTrask
-            @brief 播放指定文件夹中的曲目
-            @param folder 文件夹代号
-            @param sp 歌曲代号
-            @return 0：失败，1：成功
+            @fn specify_trask
+            @brief Play track from specified folder
+            @param folder Folder code
+            @param sp Song code
+            @return 0:Failure, 1:Success
         '''
         self._send_buf = bytearray(2)
         self._send_buf = folder
@@ -171,52 +173,52 @@ class DFRobot_SerialMP3:
 
     def loop_all(self):
         '''
-            @fn loopAll
-            @brief 循环播放全部歌曲
-            @return 0：失败，1：成功
+            @fn loop_all
+            @brief Loop through all songs
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_LOOP_ALL, self.DATA_ZERO)
 
     def stop_play(self):
         '''
-            @fn stopPlay
-            @brief 停止播放
-            @return 0：失败，1：成功
+            @fn stop_play
+            @brief Stop playback
+            @return 0:Failure, 1:Success
         '''
         return self._send_cmd_and_detect_ack(self.CMD_STOP_PLAY, self.DATA_ZERO)
 
     def random_all(self):
         '''
-            @fn randomAll
-            @brief 随机播放全部歌曲
-            @return 0：失败，1：成功
+            @fn random_all
+            @brief Randomly play all songs
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_RANDOM_ALL, self.DATA_ZERO)
 
     def current_loop(self):
         '''
-            @fn currentLoop
-            @brief 循环播放当前歌曲
-            @return 0：失败，1：成功
+            @fn current_loop
+            @brief Loop current song
+            @return 0:Failure, 1:Success
         '''
         return self.__send_cmd_and_detect_ack(self.CMD_LOOP, self.DATA_ZERO)
 
     def play_audio_mix(self, buf, number):
         '''
-            @fn playAudioMix
-            @brief 组合播放指定歌曲
-            @param buf 需要播放的歌曲
-            @param number 组合的歌曲数量
-            @return 0：失败，1：成功
+            @fn play_audio_mix
+            @brief Play specified songs in combination
+            @param buf Songs to be played
+            @param number Number of songs in the combination
+            @return 0:Failure, 1:Success
         '''
         return self._send_cmd_and_detect_ack(self.CMD_LOOP, buf, number,True)
 
 
     def get_state(self):
         '''
-            @fn getState
-            @brief 获取模块播放状态
-            @return 返回播放状态，1：播放，2：暂停，3：停止, 0：错误
+            @fn get_state
+            @brief Get the module's playback status
+            @return Returns the playback status: 1: Playing, 2: Paused, 3: Stopped, 0: Error
         '''
         if self.__send_cmd_and_detect_ack(self.CMD_GET_STATE, self.DATA_ZERO, True):
             self.state = self.cmd_buf[4]  + self.cmd_buf[5]
@@ -230,9 +232,9 @@ class DFRobot_SerialMP3:
 
     def get_version(self):
         '''
-            @fn getVersion
-            @brief 获取当前版本
-            @return 返回当前版本
+            @fn get_version
+            @brief Get current version
+            @return Returns the current version
         '''
         self.ret = 0
         if self.__send_cmd_and_detect_ack(self.CMD_GET_VERSION, self.DATA_ZERO, True):
@@ -241,9 +243,9 @@ class DFRobot_SerialMP3:
     
     def get_file(self):
         '''
-            @fn getFile
-            @brief 获取内置空间总文件数量
-            @return 返回文件数量
+            @fn get_file
+            @brief Get total number of files in built-in storage
+            @return Returns the number of files
         '''
         self.ret = 0
         if self.__send_cmd_and_detect_ack(self.CMD_GET_FILE, self.DATA_ZERO, True):
@@ -253,9 +255,9 @@ class DFRobot_SerialMP3:
 
     def get_file_number(self):
         '''
-            @fn getFileNumber
-            @brief 获取当前歌曲序列号
-            @return 返回序列号
+            @fn get_file_number
+            @brief Get current song sequence number
+            @return Returns the sequence number
         '''
         self.ret = 0
         if self.__send_cmd_and_detect_ack(self.CMD_GET_FILENUMBER, self.DATA_ZERO, True):

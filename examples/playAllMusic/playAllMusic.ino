@@ -1,6 +1,6 @@
 /*!
  *@file  playAllMusic.ino
- *@brief 这是一个循环播放内置音乐的Demo。
+ *@brief This is a demo for looping playback of built-in music.
  * ---------------------------------------------------------------------------------------------------------------
  *    board   |             MCU                | Leonardo/Mega2560/M0 |    UNO    | ESP8266 | ESP32 |  microbit  |
  *     VCC    |            3.3V/5V             |        VCC           |    VCC    |   VCC   |  VCC  |     X      |
@@ -39,21 +39,21 @@ void setup()
     #endif
     
     Serial.begin(115200);
-    ///<复位设备
+    ///< Reset the device
     mp3.reset();
     delay(1000);
 
-    ///<检测设备
+    ///< Detect the device
     while(mp3.getVersion() == 0){
         Serial.println("not fount device !!!");
         delay(100);
     }
 
-    ///<设置音量
+    ///< Set volume
     mp3.volumeSet(10);
     delay(10);
 
-    ///<开始播放
+    ///< Start playing
     mp3.startPlay();
     delay(10);
 
@@ -61,7 +61,7 @@ void setup()
 
 void loop() 
 {
-    ///<等待播放10秒
+    ///< Wait for 10 seconds of playback
     delay(10000);
     mp3.next();
 
